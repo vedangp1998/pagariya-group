@@ -1,15 +1,14 @@
 "use client";
+
 import {
   Box,
   Container,
-  Grid,
   Typography,
   TextField,
   Button,
   IconButton,
   Link as MuiLink,
   useMediaQuery,
-  styled,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -18,70 +17,50 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Link from "next/link";
-
-const StyledFooter = styled(Box)(({ theme }) => ({
-  backgroundColor: "#121212",
-  color: "#fff",
-  padding: theme.spacing(6, 0, 2),
-  position: "relative",
-}));
-
-const FooterLink = styled(MuiLink)(({ theme }) => ({
-  color: "#fff",
-  textDecoration: "none",
-  display: "block",
-  marginBottom: theme.spacing(1),
-  "&:hover": {
-    textDecoration: "underline",
-  },
-}));
-
-const SocialIcon = styled(IconButton)(({ theme }) => ({
-  color: "#fff",
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  marginRight: theme.spacing(1),
-  "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-  },
-}));
-
-const ScrollToTopButton = styled(IconButton)(({ theme }) => ({
-  position: "absolute",
-  bottom: theme.spacing(2),
-  right: theme.spacing(2),
-  backgroundColor: "#F47B43",
-  color: "#fff",
-  "&:hover": {
-    backgroundColor: "#e06a33",
-  },
-}));
-
-const SubscribeButton = styled(Button)(() => ({
-  backgroundColor: "#F47B43",
-  color: "#fff",
-  "&:hover": {
-    backgroundColor: "#e06a33",
-  },
-}));
+import { useEffect, useState } from "react";
+import { Fade } from "@mui/material";
 
 const Footer = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollButton(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <StyledFooter component="footer">
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: "#121212",
+        color: "#fff",
+        py: 6,
+        position: "relative",
+      }}
+    >
       <Container maxWidth="lg">
-        <Grid container spacing={4}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            flexWrap: "wrap",
+            gap: 4,
+            justifyContent: "space-between",
+          }}
+        >
           {/* Company Info */}
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom>
+          <Box sx={{ flex: 1, minWidth: 250 }}>
+            <Typography variant="h4" gutterBottom>
               Pagariya Group
             </Typography>
             <Typography variant="body2" paragraph>
@@ -99,49 +78,68 @@ const Footer = () => {
               <strong>Phone:</strong> +91 712 2950073
             </Typography>
             <Typography variant="body2" paragraph>
-              <strong>Mobile:</strong> +91 +91 9373593225
+              <strong>Mobile:</strong> +91 9373593225
             </Typography>
             <Typography variant="body2" paragraph>
               <strong>Email:</strong> exports@pagariyaexports.in
             </Typography>
             <Box mt={2}>
-              <SocialIcon aria-label="Twitter" size="small">
-                <TwitterIcon fontSize="small" />
-              </SocialIcon>
-              <SocialIcon aria-label="Facebook" size="small">
-                <FacebookIcon fontSize="small" />
-              </SocialIcon>
-              <SocialIcon aria-label="Instagram" size="small">
-                <InstagramIcon fontSize="small" />
-              </SocialIcon>
-              <SocialIcon aria-label="LinkedIn" size="small">
-                <LinkedInIcon fontSize="small" />
-              </SocialIcon>
+              {[TwitterIcon, FacebookIcon, InstagramIcon, LinkedInIcon].map(
+                (Icon, index) => (
+                  <IconButton
+                    key={index}
+                    sx={{
+                      color: "#fff",
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      mr: 1,
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      },
+                    }}
+                    size="small"
+                  >
+                    <Icon fontSize="small" />
+                  </IconButton>
+                )
+              )}
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" gutterBottom>
+          {/* Useful Links */}
+          <Box sx={{ flex: 1, minWidth: 200 }}>
+            <Typography variant="h5" gutterBottom>
               Useful Links
             </Typography>
-            <Link href="/" passHref legacyBehavior>
-              <FooterLink>Home</FooterLink>
-            </Link>
-            <Link href="/about" passHref legacyBehavior>
-              <FooterLink>About us</FooterLink>
-            </Link>
-            <Link href="/services" passHref legacyBehavior>
-              <FooterLink>Services</FooterLink>
-            </Link>
-            <Link href="/terms" passHref legacyBehavior>
-              <FooterLink>Terms of service</FooterLink>
-            </Link>
-            <Link href="/privacy" passHref legacyBehavior>
-              <FooterLink>Privacy policy</FooterLink>
-            </Link>
-          </Grid>
+            {["/", "/about", "/services", "/terms", "/privacy"].map(
+              (href, i) => (
+                <Link key={i} href={href} passHref legacyBehavior>
+                  <MuiLink
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      display: "block",
+                      mb: 1,
+                      "&:hover": { textDecoration: "underline" },
+                      fontSize: "14px",
+                    }}
+                  >
+                    {href === "/"
+                      ? "Home"
+                      : href === "/about"
+                      ? "About us"
+                      : href === "/services"
+                      ? "Services"
+                      : href === "/terms"
+                      ? "Terms of service"
+                      : "Privacy policy"}
+                  </MuiLink>
+                </Link>
+              )
+            )}
+          </Box>
 
-          <Grid item xs={12} md={5}>
+          {/* Newsletter */}
+          <Box sx={{ flex: 1, minWidth: 250 }}>
             <Typography variant="h6" gutterBottom>
               Our Newsletter
             </Typography>
@@ -176,19 +174,22 @@ const Footer = () => {
                   },
                 }}
               />
-              <SubscribeButton
+              <Button
                 variant="contained"
                 disableElevation
                 sx={{
+                  backgroundColor: "#F47B43",
+                  color: "#fff",
                   width: isMobile ? "100%" : "auto",
                   mt: isMobile ? 1 : 0,
+                  "&:hover": { backgroundColor: "#e06a33" },
                 }}
               >
                 Subscribe
-              </SubscribeButton>
+              </Button>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Copyright */}
         <Box
@@ -215,15 +216,28 @@ const Footer = () => {
         </Box>
       </Container>
 
-      {/* Scroll to top button */}
-      <ScrollToTopButton
-        size="small"
-        onClick={scrollToTop}
-        aria-label="scroll to top"
-      >
-        <KeyboardArrowUpIcon />
-      </ScrollToTopButton>
-    </StyledFooter>
+      {showScrollButton && (
+        <Fade in={showScrollButton}>
+          <IconButton
+            size="small"
+            onClick={scrollToTop}
+            aria-label="scroll to top"
+            sx={{
+              position: "fixed",
+              bottom: theme.spacing(2),
+              right: theme.spacing(2),
+              backgroundColor: "#F47B43",
+              color: "#fff",
+              zIndex: 1300,
+              transition: "all 0.8s ease-in-out",
+              "&:hover": { backgroundColor: "#e06a33" },
+            }}
+          >
+            <KeyboardArrowUpIcon />
+          </IconButton>
+        </Fade>
+      )}
+    </Box>
   );
 };
 

@@ -2,17 +2,11 @@
 
 import type React from "react";
 import { useState } from "react";
-import {
-  Box,
-  Container,
-  // Grid,
-  Typography,
-  TextField,
-  Button,
-  Paper,
-  Stack,
-} from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Box, Container, Typography, TextField, Button } from "@mui/material";
+import { motion } from "framer-motion";
+
+const MotionTypography = motion(Typography);
+const MotionBox = motion(Box);
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -38,7 +32,6 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Add your form submission logic here
   };
 
   return (
@@ -54,51 +47,57 @@ export default function ContactSection() {
         }}
       >
         <Box>
-          <Typography
-            sx={{
-              fontSize: "32px",
-              fontWeight: 600,
-              color: "black",
-              textAlign: "center",
-            }}
+          <MotionTypography
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            sx={{ fontSize: "32px", fontWeight: 600, color: "black" }}
             gutterBottom
           >
             CONTACT
-          </Typography>
-          <Box
-            sx={{
+          </MotionTypography>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+            style={{
+              transformOrigin: "center",
+              backgroundColor: "#FF6F00",
               width: "45px",
               height: "2.5px",
-              backgroundColor: "#FF6F00",
               margin: "12px auto",
             }}
           />
         </Box>
         <Container maxWidth="lg">
-          <Grid container spacing={3} sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 3,
+            }}
+          >
             {/* Left Section - Contact Information */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 1,
-              }}
+            <Box
+              sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 3 }}
             >
-              <Paper
-                elevation={0}
+              <MotionBox
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.03 }}
                 sx={{
                   p: 4,
-                  mb: 3,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
-                  borderRadius: 2,
                   height: "100%",
+                  border: "1px solid transparent",
+                  background: "#ffffff",
+                  color: "#333",
+                  boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
                 }}
               >
                 <Box
@@ -109,7 +108,7 @@ export default function ContactSection() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: "1px solid",
+                    border: "2px dotted rgba(239, 108, 55, 0.4)",
                     borderColor: "rgba(239, 108, 55, 0.3)",
                     mb: 2,
                   }}
@@ -122,105 +121,122 @@ export default function ContactSection() {
                 <Typography variant="body2" color="text.secondary">
                   Plot No-19, House No-1256/U1, Great Nag Road
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2">
                   Nagpur - 440018 (Maharashtra (India))
                 </Typography>
-              </Paper>
+              </MotionBox>
 
-              <Grid container spacing={3}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: 3,
+                }}
+              >
                 {/* Call Us */}
-                <Grid item xs={12} sm={6} sx={{ flexGrow: 1, display: "flex" }}>
-                  <Paper
-                    elevation={0}
+                <MotionBox
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileHover={{ scale: 1.03 }}
+                  sx={{
+                    p: 4,
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    border: "1px solid transparent",
+                    background: "#ffffff",
+                    boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+                    color: "#333",
+                  }}
+                >
+                  <Box
                     sx={{
-                      p: 4,
-                      width: "100%",
+                      width: 60,
+                      height: 60,
+                      borderRadius: "50%",
                       display: "flex",
-                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      textAlign: "center",
-                      borderRadius: 2,
+                      border: "2px dotted rgba(239, 108, 55, 0.4)",
+                      borderColor: "rgba(239, 108, 55, 0.3)",
+                      mb: 2,
                     }}
                   >
-                    <Box
-                      sx={{
-                        width: 60,
-                        height: 60,
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "1px solid",
-                        borderColor: "rgba(239, 108, 55, 0.3)",
-                        mb: 2,
-                      }}
-                    >
-                      <PhoneOutlinedIcon sx={{ color: "rgb(239, 108, 55)" }} />
-                    </Box>
-                    <Typography variant="h6" component="h2" gutterBottom>
-                      Call Us
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      +91 712 2950073
-                    </Typography>
-                  </Paper>
-                </Grid>
+                    <PhoneOutlinedIcon sx={{ color: "rgb(239, 108, 55)" }} />
+                  </Box>
+                  <Typography variant="h6" component="h2" gutterBottom>
+                    Call Us
+                  </Typography>
+                  <Typography variant="body2">+91 712 2950073</Typography>
+                </MotionBox>
 
                 {/* Email Us */}
-                <Grid item xs={12} sm={6} sx={{ flexGrow: 1, display: "flex" }}>
-                  <Paper
-                    elevation={0}
+                <MotionBox
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  whileHover={{ scale: 1.03 }}
+                  sx={{
+                    p: 4,
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    border: "1px solid transparent",
+                    background: "#ffffff",
+                    color: "#333",
+                    boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <Box
                     sx={{
-                      p: 4,
-                      width: "100%",
+                      width: 60,
+                      height: 60,
+                      borderRadius: "50%",
                       display: "flex",
-                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      textAlign: "center",
-                      borderRadius: 2,
+                      borderColor: "rgba(239, 108, 55, 0.3)",
+                      border: "2px dotted rgba(239, 108, 55, 0.4)",
+                      mb: 2,
                     }}
                   >
-                    <Box
+                    <EmailOutlinedIcon
                       sx={{
-                        width: 60,
-                        height: 60,
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "1px solid",
-                        borderColor: "rgba(239, 108, 55, 0.3)",
-                        mb: 2,
+                        color: "rgb(239, 108, 55)",
                       }}
-                    >
-                      <EmailOutlinedIcon sx={{ color: "rgb(239, 108, 55)" }} />
-                    </Box>
-                    <Typography variant="h6" component="h2" gutterBottom>
-                      Email Us
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      exports@pagariyaexports.in
-                    </Typography>
-                  </Paper>
-                </Grid>
-              </Grid>
-            </Grid>
+                    />
+                  </Box>
+                  <Typography variant="h6" component="h2" gutterBottom>
+                    Email Us
+                  </Typography>
+                  <Typography variant="body2">
+                    exports@pagariyaexports.in
+                  </Typography>
+                </MotionBox>
+              </Box>
+            </Box>
 
             {/* Right Section - Contact Form */}
-            <Grid
-              item
-              xs={12}
-              md={6}
+            <MotionBox
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
               sx={{
+                flex: 1,
                 display: "flex",
                 flexDirection: "column",
-                flex: 1,
+                background: "#ffffff",
+                boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <Paper
-                elevation={0}
+              <Box
                 sx={{
                   p: 4,
                   height: "100%",
@@ -228,26 +244,37 @@ export default function ContactSection() {
                   flexDirection: "column",
                   justifyContent: "center",
                   borderRadius: 2,
+                  border: "1px solid transparent",
                 }}
               >
                 <form onSubmit={handleSubmit}>
-                  <Stack spacing={3}>
-                    <TextField
-                      fullWidth
-                      name="name"
-                      label="Your Name"
-                      variant="outlined"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      fullWidth
-                      name="email"
-                      label="Your Email"
-                      variant="outlined"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
+                  <Box
+                    sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 2,
+                      }}
+                    >
+                      <TextField
+                        fullWidth
+                        name="name"
+                        label="Your Name"
+                        variant="outlined"
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                      <TextField
+                        fullWidth
+                        name="email"
+                        label="Your Email"
+                        variant="outlined"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </Box>
                     <TextField
                       fullWidth
                       name="subject"
@@ -273,25 +300,31 @@ export default function ContactSection() {
                         mt: 2,
                       }}
                     >
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{
-                          bgcolor: "rgb(239, 108, 55)",
-                          "&:hover": { bgcolor: "rgb(220, 90, 40)" },
-                          px: 4,
-                          py: 1.5,
-                          borderRadius: 50,
-                        }}
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        Send Message
-                      </Button>
+                        <Button
+                          type="submit"
+                          sx={{
+                            bgcolor: "rgb(239, 108, 55)",
+                            "&:hover": { bgcolor: "rgb(220, 90, 40)" },
+                            px: 4,
+                            py: 1.5,
+                            borderRadius: 50,
+                            color: "#fff",
+                            textTransform: "none",
+                          }}
+                        >
+                          Send Message
+                        </Button>
+                      </motion.div>
                     </Box>
-                  </Stack>
+                  </Box>
                 </form>
-              </Paper>
-            </Grid>
-          </Grid>
+              </Box>
+            </MotionBox>
+          </Box>
         </Container>
       </Box>
     </>

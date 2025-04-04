@@ -1,7 +1,33 @@
 import ThemeRegistry from "./ThemeRegistry";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+
 import Footer from "./components/Footer";
+import { Roboto, Poppins, Raleway } from "next/font/google";
+import Header from "./components/Header";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-raleway",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -9,10 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${roboto.variable} ${poppins.variable} ${raleway.variable}`}
+    >
       <body>
         <ThemeRegistry>
-          <Navbar />
+          <Header />
           <main className="relative overflow-hidden">{children}</main>
           <Footer />
         </ThemeRegistry>
