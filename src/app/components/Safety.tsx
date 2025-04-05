@@ -3,15 +3,16 @@ import {
   Container,
   Typography,
   Card,
-  CardMedia,
+  // CardMedia,
   CardContent,
+  // CardMediaProps
   Box,
 } from "@mui/material";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
-const MotionMedia = motion(CardMedia, { forwardMotionProps: true });
+// const MotionMedia = motion<CardMediaProps>(CardMedia);
 const MotionTypography = motion(Typography);
 
 const products = [
@@ -128,15 +129,14 @@ const SafetySolutions = () => {
                   backgroundColor: "#fff",
                 }}
               >
-                <MotionMedia
-                  component="img"
-                  sx={{
+                <motion.img
+                  style={{
                     height: 220,
                     objectFit: "contain",
-                    p: 2,
+                    padding: "16px",
                     transition: "transform 0.4s ease",
                   }}
-                  image={product.image}
+                  src={product.image}
                   alt={product.title}
                   variants={{
                     rest: { scale: 1 },
