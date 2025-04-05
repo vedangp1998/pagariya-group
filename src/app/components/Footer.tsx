@@ -175,14 +175,23 @@ const Footer = () => {
                 }}
               />
               <Button
-                variant="contained"
                 disableElevation
                 sx={{
-                  backgroundColor: "#F47B43",
+                  backgroundColor: "#E66234",
                   color: "#fff",
                   width: isMobile ? "100%" : "auto",
                   mt: isMobile ? 1 : 0,
-                  "&:hover": { backgroundColor: "#e06a33" },
+                  fontSize: "14px",
+                  transition: "all 0.3s ease",
+                  transform: "scale(1)",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                  textTransform: "none",
+
+                  "&:hover": {
+                    backgroundColor: "#d1542d",
+                    transform: "scale(1.05)",
+                    boxShadow: "0 6px 16px rgba(0, 0, 0, 0.3)",
+                  },
                 }}
               >
                 Subscribe

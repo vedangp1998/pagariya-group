@@ -38,7 +38,7 @@ export default function ContactSection() {
     <>
       <Box
         sx={{
-          py: 8,
+          pb: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -301,19 +301,25 @@ export default function ContactSection() {
                       }}
                     >
                       <motion.div
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.08 }}
                         whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
                         <Button
                           type="submit"
                           sx={{
                             bgcolor: "rgb(239, 108, 55)",
-                            "&:hover": { bgcolor: "rgb(220, 90, 40)" },
+                            color: "#fff",
+                            textTransform: "none",
                             px: 4,
                             py: 1.5,
                             borderRadius: 50,
-                            color: "#fff",
-                            textTransform: "none",
+                            transition: "all 0.3s ease",
+                            boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+                            "&:hover": {
+                              bgcolor: "rgb(220, 90, 40)",
+                              boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+                            },
                           }}
                         >
                           Send Message

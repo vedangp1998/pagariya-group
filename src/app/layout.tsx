@@ -7,7 +7,7 @@ import { Roboto, Poppins, Raleway } from "next/font/google";
 import Header from "./components/Header";
 
 export const metadata: Metadata = {
-  title: "Utex Industries",
+  title: "Pagariya Group",
   description: "Pagariya Group",
 };
 

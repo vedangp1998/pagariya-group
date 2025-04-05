@@ -31,7 +31,7 @@ const Hero = () => {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.3))",
+              "linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2))",
             zIndex: 1,
           }}
         />
@@ -41,7 +41,7 @@ const Hero = () => {
             maxWidth: "lg",
             width: "100%",
             margin: "0 auto",
-            paddingLeft: { xs: "5%", md: "10%" },
+            paddingLeft: { xs: "5%", md: "2%" },
             zIndex: 2,
           }}
         >
@@ -53,15 +53,16 @@ const Hero = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "36px", md: "60px" },
-                fontWeight: 700,
-                background: "linear-gradient(to right, #ed6936, #ffb347)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                textShadow: "2px 2px 10px rgba(0,0,0,0.3)",
+                fontSize: { xs: "36px", md: "46px" },
+                fontWeight: 600,
+                color: "#e0e0e0",
+                // background: "linear-gradient(to right, #ed6936, #ffb347)",
+                // WebkitBackgroundClip: "text",
+                // WebkitTextFillColor: "transparent",
+                // textShadow: "2px 2px 10px rgba(0,0,0,0.3)",
               }}
             >
-              Utex Industries
+              PAGARIYA GROUP
             </Typography>
           </motion.div>
 
@@ -79,7 +80,7 @@ const Hero = () => {
                 mt: 1,
               }}
             >
-              Pioneering Safety, Protecting Lives.
+              Nurturing Growth Across Diverse Sectors And Communities
             </Typography>
           </motion.div>
 
@@ -92,15 +93,16 @@ const Hero = () => {
             <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 4 }}>
               <Button
                 sx={{
-                  background: "linear-gradient(90deg, #ed6936, #ffb347)",
+                  // background: "linear-gradient(90deg, #ed6936, #ffb347)",
+                  backgroundColor: "#ed6936",
                   color: "white",
                   width: "160px",
                   height: "45px",
                   textTransform: "none",
                   fontSize: "16px",
-                  fontWeight: 600,
-                  borderRadius: "30px",
-                  boxShadow: "0 4px 20px rgba(237,105,54,0.4)",
+                  fontWeight: 500,
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 10px rgba(237,105,54,0.4)",
                   transition: "all 0.3s",
                   "&:hover": {
                     boxShadow: "0 6px 30px rgba(237,105,54,0.6)",

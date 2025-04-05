@@ -1,24 +1,31 @@
 "use client";
 import { Box, Typography, Container } from "@mui/material";
-import Image from "next/image";
-import WorkingImage from "../assets/img/working-4.jpg";
+
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
+const Details = [
+  {
+    title: "About Us",
+    content:
+      "Founded in 1950, Pagariya Group began as a textile trader and later expanded into cotton ginning, food grains trading, and diversified industrial sectors. Today, we are a multifaceted enterprise with a global footprint.",
+  },
+  {
+    title: "Mission",
+    content:
+      "Sustainable growth with innovation and integrity, creating value for stakeholders and communities.",
+  },
+  {
+    title: "Vision",
+    content:
+      "Lead global trade with superior service, quality products, and long-term partnerships.",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const floatImage = {
-  hidden: { opacity: 0, scale: 0.9, rotate: -4 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    rotate: 0,
-    transition: { duration: 1, ease: "easeOut" },
-  },
 };
 
 const skewBlock = {
@@ -62,7 +69,7 @@ const Welcome = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           style={{
-            maxWidth: "600px",
+            maxWidth: "lg",
             textAlign: "center",
           }}
         >
@@ -74,7 +81,7 @@ const Welcome = () => {
               color: "#000000",
             }}
           >
-            WELCOME TO UTEX INDUSTRIES
+            WELCOME TO PAGARIYA GROUP
           </Typography>
           <Typography
             sx={{
@@ -84,38 +91,12 @@ const Welcome = () => {
               color: "#444",
             }}
           >
-            It stands as a leading manufacturer and supplier of industrial and
-            personal protective equipment (PPE). With an advanced
-            technology-driven manufacturing setup, we specialize in customized
-            fall protection solutions designed to meet the diverse safety needs
-            of industries worldwide.
+            Rooted in the heart of Central India, Pagariya Group embarked on its
+            remarkable journey in 1950 with a singular vision—to build a legacy
+            of excellence. Today, we stand tall as Central India’s leading and
+            most dynamic business conglomerate, driven by innovation, growth,
+            and a deep commitment to community progress.
           </Typography>
-        </motion.div>
-
-        <motion.div
-          variants={floatImage}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          whileHover={{ scale: 1.05, rotate: 1 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          style={{
-            width: "100%",
-            maxWidth: "600px",
-            minWidth: "300px",
-            margin: "0 auto",
-          }}
-        >
-          <Image
-            src={WorkingImage}
-            alt="Working"
-            style={{
-              width: "100%",
-              height: "auto",
-              borderRadius: "12px",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.15)",
-            }}
-          />
         </motion.div>
       </Box>
       <motion.div
@@ -129,13 +110,12 @@ const Welcome = () => {
         <Box
           sx={{
             backgroundColor: "#E66234",
-            transform: "skewY(-3deg)",
-            py: { xs: 6, md: 16 },
+            py: { xs: 6, md: 12 },
             px: 2,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            my: { xs: 8, md: 14 },
+            my: { xs: 8, md: 10 },
           }}
         >
           <Container
@@ -154,8 +134,8 @@ const Welcome = () => {
                 left: 0,
                 width: "100%",
                 height: "100px",
-                background:
-                  "radial-gradient(circle at 10% 40%, rgba(255,255,255,0.3), transparent)",
+                // background:
+                //   "radial-gradient(circle at 10% 40%, rgba(255,255,255,0.3), transparent)",
                 zIndex: 0,
                 filter: "blur(12px)",
                 scale: scaleGlow,
@@ -163,34 +143,49 @@ const Welcome = () => {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             />
 
-            <motion.div
-              style={{ y: textY, position: "relative", zIndex: 2 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              viewport={{ once: true }}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                gap: { xs: 4, md: 6 },
+                position: "relative",
+                zIndex: 2,
+              }}
             >
-              <Typography
-                sx={{
-                  fontSize: { xs: "24px", md: "32px" },
-                  color: "black",
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
-                Commitment to Excellence
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: { xs: "16px", md: "20px" },
-                  color: "black",
-                }}
-              >
-                Our unwavering dedication to safety and quality has earned us
-                the ISO 14001-2015 certification, reinforcing our commitment to
-                environmentally responsible manufacturing.
-              </Typography>
-            </motion.div>
+              {Details.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  style={{ y: textY, flex: 1 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.9,
+                    ease: "easeOut",
+                    delay: i * 0.1,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "18px", md: "26px" },
+                      color: "black",
+                      fontWeight: 600,
+                      mb: 2,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "16px", md: "20px" },
+                      color: "black",
+                    }}
+                  >
+                    {item.content}
+                  </Typography>
+                </motion.div>
+              ))}
+            </Box>
           </Container>
         </Box>
       </motion.div>
