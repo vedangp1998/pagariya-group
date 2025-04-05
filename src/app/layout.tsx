@@ -1,9 +1,15 @@
 import ThemeRegistry from "./ThemeRegistry";
 import "./globals.css";
+import type { Metadata } from "next";
 
 import Footer from "./components/Footer";
 import { Roboto, Poppins, Raleway } from "next/font/google";
 import Header from "./components/Header";
+
+export const metadata: Metadata = {
+  title: "Utex Industries",
+  description: "Pagariya Group",
+};
 
 const roboto = Roboto({
   subsets: ["latin"],
