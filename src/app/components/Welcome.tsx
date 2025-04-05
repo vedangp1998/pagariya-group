@@ -6,41 +6,6 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
-const AnimatedText = ({ text }: { text: string }) => {
-  return (
-    <Typography
-      component="h2"
-      sx={{
-        fontSize: { xs: "20px", sm: "24px" },
-        fontWeight: 600,
-        textAlign: { xs: "center", md: "left" },
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "4px",
-        cursor: "pointer",
-      }}
-    >
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          whileHover={{
-            y: [-2, 2, -1, 1, 0],
-            rotate: [0, 2, -2, 1, 0],
-            transition: {
-              duration: 0.4,
-              ease: "easeInOut",
-              delay: index * 0.015,
-            },
-          }}
-          style={{ display: "inline-block" }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </Typography>
-  );
-};
-
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -96,13 +61,25 @@ const Welcome = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          style={{ maxWidth: "600px", textAlign: "left" }}
+          style={{
+            maxWidth: "600px",
+            textAlign: "center",
+          }}
         >
-          <AnimatedText text="WELCOME TO UTEX INDUSTRIES" />
+          <Typography
+            sx={{
+              fontSize: { xs: "24px", sm: "28px" },
+              mt: 1,
+              textAlign: { xs: "center", md: "left" },
+              color: "#000000",
+            }}
+          >
+            WELCOME TO UTEX INDUSTRIES
+          </Typography>
           <Typography
             sx={{
               fontSize: { xs: "14px", sm: "16px" },
-              mt: 1,
+              mt: 2,
               textAlign: { xs: "center", md: "left" },
               color: "#444",
             }}
