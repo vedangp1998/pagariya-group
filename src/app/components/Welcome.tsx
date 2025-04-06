@@ -45,9 +45,9 @@ const Welcome = () => {
     offset: ["start end", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  // const bgY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const textY = useTransform(scrollYProgress, [0, 1], [40, -20]);
-  const scaleGlow = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  // const scaleGlow = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   return (
     <>
       <Box
@@ -101,7 +101,6 @@ const Welcome = () => {
       </Box>
       <motion.div
         ref={skewRef}
-        style={{ y: bgY }}
         variants={skewBlock}
         initial="hidden"
         whileInView="visible"
@@ -126,25 +125,9 @@ const Welcome = () => {
               position: "relative",
             }}
           >
-            {/* Glow pulse with scroll */}
-            <motion.div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100px",
-                // background:
-                //   "radial-gradient(circle at 10% 40%, rgba(255,255,255,0.3), transparent)",
-                zIndex: 0,
-                filter: "blur(12px)",
-                scale: scaleGlow,
-              }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-
             <Box
               sx={{
+                transform: "skewY(-3deg)",
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
                 gap: { xs: 4, md: 6 },
@@ -159,7 +142,7 @@ const Welcome = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{
-                    duration: 0.9,
+                    duration: 0.8,
                     ease: "easeOut",
                     delay: i * 0.1,
                   }}

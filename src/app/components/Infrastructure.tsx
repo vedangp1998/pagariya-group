@@ -277,8 +277,6 @@
 "use client";
 import { Box, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import AgricultureIcon from "@mui/icons-material/Agriculture";
@@ -330,18 +328,8 @@ const contentData = [
 ];
 
 const Infrastructure = () => {
-  const skewRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: skewRef,
-    offset: ["start end", "end start"],
-  });
-
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -120]);
-
   return (
     <motion.div
-      ref={skewRef}
-      style={{ y: bgY }}
       variants={skewBlock}
       initial="hidden"
       whileInView="visible"
@@ -359,11 +347,7 @@ const Infrastructure = () => {
       >
         <Container sx={{ transform: "skewY(3deg)", position: "relative" }}>
           <Box
-            sx={{
-              // transform: "skewY(-3deg)",
-              position: "relative",
-              zIndex: 2,
-            }}
+            sx={{ transform: "skewY(-3deg)", position: "relative", zIndex: 2 }}
           >
             <Typography
               variant="h3"
@@ -415,7 +399,6 @@ const Infrastructure = () => {
                 >
                   <Box
                     sx={{
-                      // background: "rgba(255, 255, 255, 0.08)",
                       background: "#353535",
                       backdropFilter: "blur(8px)",
                       borderRadius: "16px",
