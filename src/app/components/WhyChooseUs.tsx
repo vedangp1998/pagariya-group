@@ -128,7 +128,7 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
             style={{
               transformOrigin: "center",
-              backgroundColor: "#FF6F00",
+              backgroundColor: "#E66234",
               width: "50px",
               height: "3px",
               margin: "14px auto",
