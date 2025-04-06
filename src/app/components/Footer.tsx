@@ -179,6 +179,7 @@ const Footer = () => {
                 sx={{
                   backgroundColor: "#E66234",
                   color: "#fff",
+                  px: 2,
                   width: isMobile ? "100%" : "auto",
                   mt: isMobile ? 1 : 0,
                   fontSize: "14px",
@@ -186,7 +187,6 @@ const Footer = () => {
                   transform: "scale(1)",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
                   textTransform: "none",
-
                   "&:hover": {
                     backgroundColor: "#d1542d",
                     transform: "scale(1.05)",

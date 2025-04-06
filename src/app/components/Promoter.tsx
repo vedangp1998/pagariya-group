@@ -1,30 +1,29 @@
 "use client";
 import { Box, Typography, Container } from "@mui/material";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
-// import Image1 from "../assets/img/team/Shri-Ujjwal.png";
-// import Image2 from "../assets/img/team/Shri-Ulhas.png";
-// import Image3 from "../assets/img/team/Umesh-ji-1.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import Image1 from "../assets/img/team/Shri-Ujjwal.png";
+import Image2 from "../assets/img/team/Shri-Ulhas.png";
+import Image3 from "../assets/img/team/Umesh-ji.jpg";
 
-const skewBlock = {
-  hidden: { opacity: 0, y: 80, skewY: -5 },
+// Fade + Rise animation
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    skewY: -3,
-    transition: { duration: 1, ease: [0.6, -0.05, 0.01, 0.99] },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
-const boxVariants = {
-  hidden: { opacity: 0, y: 30 },
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.2,
-      duration: 0.6,
+      delay: 0.3 + i * 0.2,
+      duration: 0.5,
       ease: "easeOut",
     },
   }),
@@ -32,179 +31,175 @@ const boxVariants = {
 
 const promoterProfiles = [
   {
-    image: "/img/team/Shri-Ujjwal.png",
+    image: Image1.src,
     name: "Mr. Ujwal Pagariya",
     position: "Financial strategist and business expansion expert.",
   },
   {
-    image: "/img/team/Shri-Ulhas.png",
+    image: Image2.src,
     name: "Mr. Ulhas Pagariya",
     position: "Operations and industrial safety specialist.",
   },
   {
-    image: "/img/team/Umesh-ji.jpg",
+    image: Image3.src,
     name: "Mr. Umesh Pagariya",
     position: "Techno-commercial expert, driving diversified growth.",
   },
 ];
 
 const Promoter = () => {
-  const skewRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: skewRef,
-    offset: ["start end", "end start"],
-  });
+  const [animate, setAnimate] = useState(false);
 
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const scaleGlow = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  useEffect(() => {
+    // Trigger animation on every mount
+    setAnimate(false);
+    const timeout = setTimeout(() => setAnimate(true), 10);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <motion.div
-      ref={skewRef}
-      style={{ y: bgY }}
-      variants={skewBlock}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-    >
-      <Box
-        sx={{
-          backgroundColor: "#E66234",
-          py: { xs: 6, md: 12 },
-          px: 2,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          my: { xs: 8, md: 10 },
-        }}
-      >
-        <Container
-          sx={{
-            transform: "skewY(3deg)",
-            maxWidth: "lg",
-            position: "relative",
-            textAlign: "center",
-          }}
+    <AnimatePresence mode="wait">
+      {animate && (
+        <motion.div
+          key="promoter-container"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
         >
-          <motion.div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100px",
-              zIndex: 0,
-              filter: "blur(12px)",
-              scale: scaleGlow,
+          <Box
+            sx={{
+              backgroundColor: "#E66234",
+              transform: "skewY(-3deg)",
+              py: { xs: 6, md: 12 },
+              px: 2,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              my: { xs: 8, md: 10 },
             }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-          />
-
-          <Box sx={{ position: "relative", zIndex: 2 }}>
-            <Typography
-              variant="h3"
+          >
+            <Container
               sx={{
-                fontWeight: 600,
-                color: "white",
-                mb: 4,
-                fontSize: { xs: "26px", md: "34px" },
+                transform: "skewY(3deg)",
+                maxWidth: "lg",
+                position: "relative",
+                textAlign: "center",
               }}
             >
-              PROMOTER
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              sx={{
-                color: "white",
-                maxWidth: "700px",
-                mx: "auto",
-                mb: 8,
-                fontSize: { xs: "12px", md: "16px" },
-              }}
-            >
-              Meet the Minds Behind Our Success
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                gap: 4,
-                justifyContent: "center",
-              }}
-            >
-              {promoterProfiles.map((profile, i) => (
-                <motion.div
-                  key={i}
-                  custom={i}
-                  variants={boxVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  viewport={{ once: true }}
-                  style={{ flex: 1, display: "flex", flexDirection: "column" }}
+              <Box sx={{ position: "relative", zIndex: 2 }}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 600,
+                    color: "white",
+                    mb: 4,
+                    fontSize: { xs: "26px", md: "34px" },
+                  }}
                 >
-                  <Box
-                    sx={{
-                      backgroundColor: "#353535",
-                      borderRadius: "4px",
-                      overflow: "hidden",
-                      transition:
-                        "background-color 0.3s ease, box-shadow 0.3s ease",
-                      "&:hover": {
-                        backgroundColor: "#444",
-                        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)",
-                      },
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={profile.image}
-                      alt={profile.name}
-                      sx={{
-                        width: "100%",
-                        height: { xs: "300px", md: "460px" },
-                        objectFit: "cover",
-                        // display: "block",
-                      }}
-                    />
+                  PROMOTER
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: "white",
+                    maxWidth: "700px",
+                    mx: "auto",
+                    mb: 8,
+                    fontSize: { xs: "12px", md: "16px" },
+                  }}
+                >
+                  Meet the Minds Behind Our Success
+                </Typography>
 
-                    <Box
-                      sx={{
-                        backgroundColor: "#353535",
-                        p: 2,
-                        py: 3,
-                        textAlign: "left",
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                    gap: 4,
+                    justifyContent: "center",
+                  }}
+                >
+                  {promoterProfiles.map((profile, i) => (
+                    <motion.div
+                      key={i}
+                      custom={i}
+                      variants={cardVariants}
+                      initial="hidden"
+                      animate="visible"
+                      whileHover={{ scale: 1.01, y: -4 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
                       }}
                     >
-                      <Typography
+                      <Box
                         sx={{
-                          color: "#fff",
-                          fontWeight: 600,
-                          fontSize: { xs: "14px", md: "16px" },
+                          borderRadius: "8px",
+                          overflow: "hidden",
+                          border: "none",
+                          transition:
+                            "background-color 0.3s ease, box-shadow 0.3s ease",
+                          "&:hover": {
+                            backgroundColor: "#444",
+                            boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)",
+                          },
                         }}
                       >
-                        {profile.name}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: "#fff",
-                          fontSize: { xs: "10px", md: "12px" },
-                          opacity: 0.8,
-                        }}
-                      >
-                        {profile.position}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </motion.div>
-              ))}
-            </Box>
+                        <Box
+                          component="img"
+                          src={profile.image}
+                          alt={profile.name}
+                          sx={{
+                            width: "100%",
+                            aspectRatio: "3 / 4",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            backgroundColor: "#353535",
+                            p: 2,
+                            py: 3,
+                            textAlign: "left",
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              color: "#fff",
+                              fontWeight: 600,
+                              fontSize: { xs: "14px", md: "16px" },
+                            }}
+                          >
+                            {profile.name}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: "#fff",
+                              fontSize: { xs: "10px", md: "12px" },
+                              opacity: 0.8,
+                            }}
+                          >
+                            {profile.position}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </motion.div>
+                  ))}
+                </Box>
+              </Box>
+            </Container>
           </Box>
-        </Container>
-      </Box>
-    </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
