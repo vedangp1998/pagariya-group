@@ -83,22 +83,22 @@ const features = [
   {
     title: "70+ Years of Trust",
     description: "Established industry leader with a legacy of reliability.",
-    icon: <VerifiedIcon sx={{ fontSize: 48, color: "#FF6F00" }} />,
+    icon: <VerifiedIcon sx={{ fontSize: 48, color: "#E66234" }} />,
   },
   {
     title: "Certified Quality",
     description: "BIS, ISO, FDA, NABL-accredited standards of excellence.",
-    icon: <WorkspacePremiumIcon sx={{ fontSize: 48, color: "#FF6F00" }} />,
+    icon: <WorkspacePremiumIcon sx={{ fontSize: 48, color: "#E66234" }} />,
   },
   {
     title: "Powerful Logistics",
     description: "Fleet of 700+ vehicles ensures fast and safe delivery.",
-    icon: <LocalShippingIcon sx={{ fontSize: 48, color: "#FF6F00" }} />,
+    icon: <LocalShippingIcon sx={{ fontSize: 48, color: "#E66234" }} />,
   },
   {
     title: "Customer First",
     description: "24/7 support with transparent, ethical practices.",
-    icon: <SupportAgentIcon sx={{ fontSize: 48, color: "#FF6F00" }} />,
+    icon: <SupportAgentIcon sx={{ fontSize: 48, color: "#E66234" }} />,
   },
 ];
 
