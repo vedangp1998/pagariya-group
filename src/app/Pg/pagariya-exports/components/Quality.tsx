@@ -1,4 +1,8 @@
 "use client";
+import Image1 from "../../../assets/img/certificates/iso2000.png";
+import Image2 from "../../../assets/img/certificates/SFDA.png";
+import Image3 from "../../../assets/img/certificates/cs.png";
+
 import {
   Container,
   Typography,
@@ -17,20 +21,16 @@ const MotionTypography = motion(Typography);
 
 const products = [
   {
-    title: "Full-body harnesses",
-    image: "/images/harness.jpg",
+    title: "ISO 22000 – Ensuring food safety at every stage",
+    image: Image1.src,
   },
   {
-    title: "Industrial safety helmets",
-    image: "/images/helmet.jpg",
+    title: "SFDA – Meeting stringent safety and quality regulations",
+    image: Image2.src,
   },
   {
-    title: "Safety shoes",
-    image: "/images/shoes.jpg",
-  },
-  {
-    title: "Reflective jackets",
-    image: "/images/jacket.jpg",
+    title: "China Standards Certification – Expanding our global credibility",
+    image: Image3.src,
   },
 ];
 
@@ -48,7 +48,7 @@ const cardVariants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
 };
 
-const SafetySolutions = () => {
+const Quality = () => {
   return (
     <MotionBox
       variants={containerVariants}
@@ -56,7 +56,7 @@ const SafetySolutions = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <Container sx={{ py: 0, textAlign: "center" }}>
+      <Container sx={{ pt: 6, marginBottom: 12, textAlign: "center" }}>
         <MotionTypography
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ const SafetySolutions = () => {
           sx={{ fontSize: "32px", fontWeight: 600, color: "black" }}
           gutterBottom
         >
-          COMPREHENSIVE SAFETY SOLUTIONS
+          INTERNATIONAL CERTIFICATIONS & QUALITY ASSURANCE
         </MotionTypography>
 
         <motion.div
@@ -87,7 +87,8 @@ const SafetySolutions = () => {
           sx={{ fontSize: "14px", color: "black" }}
           gutterBottom
         >
-          We offer a wide range of high-quality PPE, including:
+          To maintain excellence in every grain we process, Pagariya Exports
+          Private Limited holds several prestigious certifications, including:
         </MotionTypography>
 
         <Box
@@ -107,7 +108,7 @@ const SafetySolutions = () => {
               initial="rest"
               animate="rest"
               sx={{
-                width: { xs: "100%", sm: "45%", md: "22%" },
+                width: { xs: "100%", sm: "80%", md: "30%" }, // Increased card width
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -117,7 +118,7 @@ const SafetySolutions = () => {
                   rest: { scale: 1, boxShadow: "0px 0px 0px rgba(0,0,0,0)" },
                   hover: {
                     scale: 1.03,
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                    boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
                     transition: { duration: 0.3 },
                   },
                 }}
@@ -131,9 +132,10 @@ const SafetySolutions = () => {
               >
                 <motion.img
                   style={{
-                    height: 220,
+                    height: 300, // ⬆️ Increased image height
+                    width: "100%",
                     objectFit: "contain",
-                    padding: "16px",
+                    padding: "24px", // optional: more padding
                     transition: "transform 0.4s ease",
                   }}
                   src={product.image}
@@ -148,9 +150,12 @@ const SafetySolutions = () => {
                 />
                 <CardContent>
                   <MotionTypography
-                    variant="body1"
                     fontWeight="500"
-                    sx={{ position: "relative", display: "inline-block" }}
+                    sx={{
+                      position: "relative",
+                      display: "inline-block",
+                      fontSize: "12px",
+                    }}
                     variants={{
                       rest: { color: "black" },
                       hover: {
@@ -181,9 +186,24 @@ const SafetySolutions = () => {
             </MotionBox>
           ))}
         </Box>
+
+        <Box
+          sx={{
+            margin: "0px auto",
+            fontSize: "8px",
+            marginTop: 6,
+            marginBottom: 8,
+          }}
+        >
+          <Typography>
+            At Pagariya Exports Private Limited, our mission is to deliver the
+            best of India’s harvest to the world, ensuring quality,
+            authenticity, and trust in every shipment.
+          </Typography>
+        </Box>
       </Container>
     </MotionBox>
   );
 };
 
-export default SafetySolutions;
+export default Quality;

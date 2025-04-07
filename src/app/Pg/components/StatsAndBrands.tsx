@@ -6,122 +6,29 @@ import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import { motion } from "framer-motion";
 // import { useEffect, useState } from "react";
 
-import Logo1 from "../assets/logos/logo1.png";
-import Logo2 from "../assets/logos/logo2.png";
-import Logo3 from "../assets/logos/logo3.png";
-import Logo4 from "../assets/logos/logo4.png";
-import Logo5 from "../assets/logos/logo5.png";
-import Logo6 from "../assets/logos/logo6.png";
-import Logo7 from "../assets/logos/logo7.png";
-import Logo8 from "../assets/logos/logo8.png";
-import Logo9 from "../assets/logos/logo9.png";
-import Logo10 from "../assets/logos/logo10.png";
-import Logo11 from "../assets/logos/logo11.png";
-import Logo12 from "../assets/logos/logo12.png";
-import Logo13 from "../assets/logos/logo13.png";
-import Logo14 from "../assets/logos/logo14.png";
-import Logo15 from "../assets/logos/logo15.png";
-import Logo16 from "../assets/logos/logo16.png";
-import Logo17 from "../assets/logos/logo17.png";
-import Logo18 from "../assets/logos/logo18.png";
-import Logo19 from "../assets/logos/logo19.png";
-import Logo20 from "../assets/logos/logo20.png";
-import Logo21 from "../assets/logos/logo21.png";
-import Logo22 from "../assets/logos/logo22.png";
-import Logo23 from "../assets/logos/logo23.png";
-
-// const AnimatedStrip = ({ brands, direction = "left", delay = 0 }) => {
-//   const animateFrom = direction === "left" ? "100%" : "-100%";
-//   const animateTo = direction === "left" ? "-100%" : "100%";
-
-//   return (
-//     <motion.div
-//       initial={{ x: animateFrom, opacity: 0.4 }}
-//       animate={{ x: animateTo, opacity: 1 }}
-//       transition={{
-//         repeat: Infinity,
-//         ease: "linear",
-//         duration: 40,
-//         delay,
-//       }}
-//       style={{
-//         display: "flex",
-//         gap: "40px",
-//         whiteSpace: "nowrap",
-//       }}
-//     >
-//       {[...brands, ...brands].map((brand, index) => (
-//         <motion.div
-//           key={index}
-//           whileHover={{ scale: 1.1 }}
-//           transition={{ type: "spring", stiffness: 200 }}
-//         >
-//           <Box
-//             sx={{
-//               bgcolor: "#ffffff",
-//               borderRadius: 3,
-//               boxShadow: "0 6px 20px rgba(0, 0, 0, 0.1)",
-//               p: 3,
-//               display: "flex",
-//               alignItems: "center",
-//               justifyContent: "center",
-//               height: 100,
-//               width: 180,
-//               flexShrink: 0,
-//               transition: "transform 0.3s ease",
-//             }}
-//           >
-//             <Box
-//               component="img"
-//               src={brand.logo.src}
-//               alt={brand.name}
-//               sx={{
-//                 maxWidth: "100%",
-//                 maxHeight: "100%",
-//                 objectFit: "contain",
-//                 filter: "brightness(1.1) contrast(1.2)",
-//               }}
-//             />
-//           </Box>
-//         </motion.div>
-//       ))}
-//     </motion.div>
-//   );
-// };
-
-// export const BrandCarousel = ({ brands }) => {
-//   const [groups, setGroups] = useState([[], [], []]);
-
-//   useEffect(() => {
-//     const newGroups = [[], [], []];
-//     brands.forEach((brand, index) => {
-//       newGroups[index % 3].push(brand);
-//     });
-//     setGroups(newGroups);
-//   }, [brands]);
-
-//   return (
-//     <Box
-//       sx={{
-//         width: "100%",
-//         overflow: "hidden",
-//         background: "linear-gradient(to bottom, #f8f8f8, #e8e8e8)",
-//         py: 6,
-//         px: 2,
-//       }}
-//     >
-//       <Box sx={{ mb: 4 }}>
-//         <AnimatedStrip brands={groups[0]} direction="left" delay={0} />
-//       </Box>
-//       <Box sx={{ mb: 4 }}>
-//         <AnimatedStrip brands={groups[1]} direction="right" delay={2} />
-//       </Box>
-//       <Box>
-//         <AnimatedStrip brands={groups[2]} direction="left" delay={4} />
-//       </Box>
-//     </Box>
-//   );
-// };
+import Logo1 from "../../assets/logos/logo1.png";
+import Logo2 from "../../assets/logos/logo2.png";
+import Logo3 from "../../assets/logos/logo3.png";
+import Logo4 from "../../assets/logos/logo4.png";
+import Logo5 from "../../assets/logos/logo5.png";
+import Logo6 from "../../assets/logos/logo6.png";
+import Logo7 from "../../assets/logos/logo7.png";
+import Logo8 from "../../assets/logos/logo8.png";
+import Logo9 from "../../assets/logos/logo9.png";
+import Logo10 from "../../assets/logos/logo10.png";
+import Logo11 from "../../assets/logos/logo11.png";
+import Logo12 from "../../assets/logos/logo12.png";
+import Logo13 from "../../assets/logos/logo13.png";
+import Logo14 from "../../assets/logos/logo14.png";
+import Logo15 from "../../assets/logos/logo15.png";
+import Logo16 from "../../assets/logos/logo16.png";
+import Logo17 from "../../assets/logos/logo17.png";
+import Logo18 from "../../assets/logos/logo18.png";
+import Logo19 from "../../assets/logos/logo19.png";
+import Logo20 from "../../assets/logos/logo20.png";
+import Logo21 from "../../assets/logos/logo21.png";
+import Logo22 from "../../assets/logos/logo22.png";
+import Logo23 from "../../assets/logos/logo23.png";
 
 const MotionBox = motion(Box);
 
@@ -312,8 +219,6 @@ export default function StatsAndBrands() {
           </MotionBox>
         ))}
       </Box>
-
-      {/* <BrandCarousel brands={brands} /> */}
     </Box>
   );
 }

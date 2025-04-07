@@ -1,16 +1,17 @@
 "use client";
 import { Box, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
-import Image1 from "../assets/img/team/Shri-Ujjwal.png";
-import Image2 from "../assets/img/team/Shri-Ulhas.png";
-import Image3 from "../assets/img/team/Umesh-ji.jpg";
+import Image1 from "../../assets/img/team/Shri-Ujjwal.png";
+import Image2 from "../../assets/img/team/Shri-Ulhas.png";
+import Image3 from "../../assets/img/team/Umesh-ji.jpg";
 
-const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
+// Smooth entrance for the orange section
+const sectionVariants = {
+  hidden: { opacity: 0, y: 60 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 1.2, ease: "easeInOut" },
   },
 };
 
@@ -48,7 +49,7 @@ const promoterProfiles = [
 const Promoter = () => {
   return (
     <motion.div
-      variants={containerVariants}
+      variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -56,7 +57,6 @@ const Promoter = () => {
       <Box
         sx={{
           backgroundColor: "#E66234",
-          transform: "skewY(-3deg)",
           py: { xs: 6, md: 12 },
           px: 2,
           display: "flex",
@@ -67,7 +67,6 @@ const Promoter = () => {
       >
         <Container
           sx={{
-            transform: "skewY(3deg)",
             maxWidth: "lg",
             position: "relative",
             textAlign: "center",
@@ -113,6 +112,7 @@ const Promoter = () => {
                   variants={cardVariants}
                   initial="hidden"
                   whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{ scale: 1.01, y: -4 }}
                   transition={{
                     type: "spring",

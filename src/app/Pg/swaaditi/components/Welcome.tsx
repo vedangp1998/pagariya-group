@@ -1,41 +1,21 @@
 "use client";
 import { Box, Typography, Container } from "@mui/material";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
+import ImageSwaaditi from "../../../assets/details/swaaditi.jpg";
 
 const Details = [
   {
     title: "About Us",
     content:
-      "Founded in 1950, Pagariya Group began as a textile trader and later expanded into cotton ginning, food grains trading, and diversified industrial sectors. Today, we are a multifaceted enterprise with a global footprint.",
-  },
-  {
-    title: "Mission",
-    content:
-      "Sustainable growth with innovation and integrity, creating value for stakeholders and communities.",
-  },
-  {
-    title: "Vision",
-    content:
-      "Lead global trade with superior service, quality products, and long-term partnerships.",
+      "‘Swaaditi’, the company’s flagship FMCG brand, is a game-changer in the packaged food industry. This ambitious venture will encompass a wide variety of food products, from spices to new product categories, setting new benchmarks in taste and quality. With a strong focus on international expansion, the brand aims to bring its authentic flavors beyond India’s borders, catering to global food lovers.",
   },
 ];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const skewBlock = {
-  hidden: { opacity: 0, y: 80, skewY: -5 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    skewY: -3,
-    transition: { duration: 1, ease: [0.6, -0.05, 0.01, 0.99] },
-  },
 };
 
 const Welcome = () => {
@@ -45,33 +25,31 @@ const Welcome = () => {
     offset: ["start end", "end start"],
   });
 
-  // const bgY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const textY = useTransform(scrollYProgress, [0, 1], [40, -20]);
-  // const scaleGlow = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
   return (
     <>
+      {/* Welcome Content + Image */}
       <Box
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           alignItems: "center",
           px: { xs: 2, sm: 4, md: 8 },
           py: { xs: 4, md: 8 },
-          gap: { xs: 6, md: 12 },
+          gap: { xs: 4, md: 8 },
           maxWidth: "lg",
           mx: "auto",
         }}
       >
+        {/* Text Content */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          style={{
-            maxWidth: "lg",
-            textAlign: "center",
-          }}
+          style={{ flex: 1 }}
         >
           <Typography
             sx={{
@@ -81,7 +59,17 @@ const Welcome = () => {
               color: "#000000",
             }}
           >
-            WELCOME TO PAGARIYA GROUP
+            WELCOME TO SWAADITI
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: "6px", sm: "10px" },
+              mt: 1,
+              textAlign: { xs: "center", md: "left" },
+              color: "#000000",
+            }}
+          >
+            (Part of Pagariya Consumer Foods Pvt. Ltd.)
           </Typography>
           <Typography
             sx={{
@@ -91,22 +79,66 @@ const Welcome = () => {
               color: "#444",
             }}
           >
-            Rooted in the heart of Central India, Pagariya Group embarked on its
-            remarkable journey in 1950 with a singular vision—to build a legacy
-            of excellence. Today, we stand tall as Central India’s leading and
-            most dynamic business conglomerate, driven by innovation, growth,
-            and a deep commitment to community progress.
+            At Pagariya Consumer Foods Pvt. Ltd., we don’t just create food, we
+            craft experiences, blending tradition with innovation to bring you
+            the finest flavors from India and beyond.
           </Typography>
         </motion.div>
+
+        {/* Animated Image with Hover */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          whileHover={{
+            scale: 1.05,
+            rotate: 3,
+            boxShadow: "0px 12px 30px rgba(0,0,0,0.2)",
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{
+            flex: 1,
+            width: "100%",
+            maxWidth: 500,
+            position: "relative",
+            borderRadius: 12,
+            overflow: "hidden",
+            transformOrigin: "center",
+          }}
+        >
+          <Box
+            sx={{
+              width: "100%",
+              height: { xs: 200, sm: 300, md: 350 },
+              position: "relative",
+              borderRadius: 3,
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src={ImageSwaaditi}
+              alt="Image Swaaditi"
+              fill
+              style={{
+                objectFit: "cover",
+                borderRadius: 12,
+              }}
+              priority
+            />
+          </Box>
+        </motion.div>
       </Box>
+
+      {/* Straight Orange Background Section */}
       <motion.div
-        ref={skewRef}
-        variants={skewBlock}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
+        variants={fadeUp}
       >
         <Box
+          ref={skewRef}
           sx={{
             backgroundColor: "#E66234",
             py: { xs: 6, md: 12 },
@@ -119,15 +151,13 @@ const Welcome = () => {
         >
           <Container
             sx={{
-              transform: "skewY(3deg)",
-              textAlign: "left",
+              textAlign: "center",
               maxWidth: "md",
               position: "relative",
             }}
           >
             <Box
               sx={{
-                transform: "skewY(-3deg)",
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
                 gap: { xs: 4, md: 6 },
@@ -150,7 +180,7 @@ const Welcome = () => {
                 >
                   <Typography
                     sx={{
-                      fontSize: { xs: "18px", md: "26px" },
+                      fontSize: { xs: "18px", md: "32px" },
                       color: "black",
                       fontWeight: 600,
                       mb: 2,

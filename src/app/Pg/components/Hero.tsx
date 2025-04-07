@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
-import HeroImage from "../assets/img/hero-bg.jpg";
+import HeroImage from "../../assets/img/hero-bg.jpg";
 import { CirclePlay, X } from "lucide-react";
 import { motion } from "framer-motion";
 

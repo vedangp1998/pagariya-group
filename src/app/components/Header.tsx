@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -18,6 +19,10 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const companyKey = pathname.split("/")[1] || "pagariyagroup";
+  const currentLinks = NavLinks[companyKey] || [];
 
   return (
     <>
@@ -43,7 +48,7 @@ const Header = () => {
             width: "100%",
           }}
         >
-          <Link href="/">
+          <Link href="/Pg" passHref>
             <Image
               src={Logo}
               alt="Logo"
@@ -67,9 +72,9 @@ const Header = () => {
             }}
             sx={{ display: { xs: "none", lg: "flex" }, gap: 4 }}
           >
-            {NavLinks.map((link) => (
+            {currentLinks.map((link) => (
               <motion.div
-                key={link.key}
+                key={link.href}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
@@ -82,8 +87,8 @@ const Header = () => {
                     sx={{
                       fontSize: "18px",
                       cursor: "pointer",
-                      color: link.key === "home" ? "#E66234" : "black",
-                      fontWeight: link.key === "home" ? "bold" : "normal",
+                      color: link.href === "#home" ? "#E66234" : "black",
+                      fontWeight: link.href === "#home" ? "bold" : "normal",
                       transition: "color 0.3s ease",
                       "&:hover": {
                         color: "#E66234",
@@ -127,28 +132,23 @@ const Header = () => {
             }}
             style={{ listStyle: "none", padding: 0, margin: 0 }}
           >
-            {NavLinks.map((link) => (
+            {currentLinks.map((link) => (
               <motion.li
-                key={link.key}
+                key={link.href}
                 variants={{
                   hidden: { opacity: 0, x: -20 },
                   visible: { opacity: 1, x: 0 },
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <ListItem
-                  component="a"
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  sx={{ px: 2 }}
-                >
-                  <Link href={link.href} passHref legacyBehavior>
+                <a href={link.href} style={{ textDecoration: "none" }}>
+                  <ListItem onClick={() => setIsOpen(false)} sx={{ px: 2 }}>
                     <ListItemText
                       primary={link.label}
                       sx={{
                         fontSize: "18px",
-                        color: link.key === "home" ? "#E66234" : "black",
-                        fontWeight: link.key === "home" ? "bold" : "normal",
+                        color: link.href === "#home" ? "#E66234" : "black",
+                        fontWeight: link.href === "#home" ? "bold" : "normal",
                         transition: "color 0.3s ease",
                         "&:hover": {
                           color: "#E66234",
@@ -156,8 +156,8 @@ const Header = () => {
                         },
                       }}
                     />
-                  </Link>
-                </ListItem>
+                  </ListItem>
+                </a>
               </motion.li>
             ))}
           </motion.ul>
