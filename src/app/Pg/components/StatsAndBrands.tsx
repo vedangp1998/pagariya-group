@@ -32,6 +32,7 @@ import Logo20 from "../../assets/logos/logo20.png";
 import Logo21 from "../../assets/logos/logo21.png";
 import Logo22 from "../../assets/logos/logo22.png";
 import Logo23 from "../../assets/logos/logo23.png";
+import Logo25 from "../../assets/logos/logo25.png";
 
 const MotionBox = motion(Box);
 
@@ -56,6 +57,7 @@ export default function StatsAndBrands() {
     { name: "PAGARIYA EXPORTS", logo: Logo2, link: "/Pg/pagariya-exports" },
     { name: "PAGARIYA HOMES", logo: Logo3, link: "/Pg/pagariya-homes" },
     { name: "PAGARIYA REALTORS", logo: Logo4, link: "/Pg/pagariya-realtors" },
+    { name: "SWAADITI", logo: Logo25, link: "/Pg/swaaditi" },
     { name: "PAGARIYA WOODWORKS", logo: Logo5, link: "/Pg" },
     { name: "PAGARIYA HOMES", logo: Logo6, link: "/Pg" },
     { name: "PAGARIYA METALS", logo: Logo7, link: "/Pg" },
@@ -230,8 +232,8 @@ export default function StatsAndBrands() {
                   src={brand.logo}
                   alt={brand.name}
                   style={{
-                    maxWidth: "90%",
-                    maxHeight: "90%",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
                     objectFit: "contain",
                   }}
                 />
