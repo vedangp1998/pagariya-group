@@ -21,8 +21,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const companyKey = pathname.split("/")[1] || "pagariyagroup";
-  const currentLinks = NavLinks[companyKey] || [];
+  const pathSegment = pathname.split("/")[1];
+  const companyKey =
+    pathSegment === ""
+      ? "default"
+      : pathSegment === "pagariya-exports"
+      ? "exports"
+      : pathSegment;
+  const currentLinks = NavLinks[companyKey] || NavLinks["default"];
 
   return (
     <>
@@ -58,6 +64,7 @@ const Header = () => {
             />
           </Link>
 
+          {/* Desktop Links */}
           <Box
             component={motion.div}
             initial="hidden"
@@ -101,6 +108,7 @@ const Header = () => {
             ))}
           </Box>
 
+          {/* Mobile Menu Button */}
           <IconButton
             sx={{ display: { xs: "block", lg: "none" }, color: "black" }}
             onClick={() => setIsOpen(true)}
@@ -113,12 +121,10 @@ const Header = () => {
       {/* Mobile Sidebar */}
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
         <Box sx={{ width: 250, p: 2 }}>
-          {/* Close Button */}
           <IconButton onClick={() => setIsOpen(false)} sx={{ mb: 2 }}>
             <X />
           </IconButton>
 
-          {/* Mobile Links */}
           <motion.ul
             initial="hidden"
             animate="visible"
