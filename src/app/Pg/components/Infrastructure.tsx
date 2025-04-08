@@ -99,12 +99,9 @@ const Infrastructure = () => {
 
             <Box
               sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "1fr",
-                  sm: "1fr 1fr",
-                  md: "repeat(3, 1fr)",
-                },
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
                 gap: 4,
               }}
             >
@@ -117,6 +114,12 @@ const Infrastructure = () => {
                   whileInView="visible"
                   whileHover={{ scale: 1.04, rotate: 0.5 }}
                   viewport={{ once: true }}
+                  style={{
+                    flex: "1 1 calc(33.333% - 32px)",
+                    maxWidth: "calc(33.333% - 32px)",
+                    minWidth: "250px",
+                    boxSizing: "border-box",
+                  }}
                 >
                   <Box
                     sx={{
