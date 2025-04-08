@@ -54,7 +54,7 @@ const Header = () => {
             width: "100%",
           }}
         >
-          <Link href="/Pg" passHref>
+          <Link href="/" passHref>
             <Image
               src={Logo}
               alt="Logo"
