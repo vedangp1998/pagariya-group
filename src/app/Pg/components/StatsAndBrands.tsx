@@ -1,11 +1,14 @@
 "use client";
+
 import { Box, Typography } from "@mui/material";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import { motion } from "framer-motion";
-// import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
+// Logo Imports
 import Logo1 from "../../assets/logos/logo1.png";
 import Logo2 from "../../assets/logos/logo2.png";
 import Logo3 from "../../assets/logos/logo3.png";
@@ -34,29 +37,53 @@ const MotionBox = motion(Box);
 
 export default function StatsAndBrands() {
   const brands = [
-    { name: "UTZ", logo: Logo1 },
-    { name: "PAGARIYA", logo: Logo2 },
-    { name: "PAGARIYA GROUP", logo: Logo3 },
-    { name: "PAGARIYA REALTORS", logo: Logo4 },
-    { name: "PAGARIYA WOODWORKS", logo: Logo5 },
-    { name: "PAGARIYA HOMES", logo: Logo6 },
-    { name: "PAGARIYA METALS", logo: Logo7 },
-    { name: "PAGARIYA LAKE GARDEN", logo: Logo8 },
-    { name: "PAGARIYA LAWNS", logo: Logo9 },
-    { name: "PAGARIYA FARMS", logo: Logo10 },
-    { name: "PAGARIYA EQUIPMENT SOLUTIONS", logo: Logo11 },
-    { name: "PAGARIYA EQUIPMENT SOLUTIONS", logo: Logo12 },
-    { name: "PAGARIYA CRUSHERS", logo: Logo13 },
-    { name: "PAGARIYA TEXTILE PARK", logo: Logo14 },
-    { name: "PAGARMAL FOUNDATION", logo: Logo15 },
-    { name: "DARAS", logo: Logo16 },
-    { name: "VIDARBHA", logo: Logo17 },
-    { name: "URJA TECH", logo: Logo18 },
-    { name: "URJA INFRASTONE", logo: Logo19 },
-    { name: "URJA INFRASTRUCTURES", logo: Logo20 },
-    { name: "PAGARIYA STONES", logo: Logo21 },
-    { name: "PAGARIYA CERAMIC", logo: Logo22 },
-    { name: "GREEN", logo: Logo23 },
+    { name: "UTZ", logo: Logo1, link: "/Pg/utex" },
+    { name: "PAGARIYA EXPORTS", logo: Logo2, link: "/Pg/pagariya-exports" },
+    { name: "PAGARIYA HOMES", logo: Logo3, link: "/Pg/pagariya-homes" },
+    { name: "PAGARIYA REALTORS", logo: Logo4, link: "/Pg/pagariya-realtors" },
+    { name: "PAGARIYA WOODWORKS", logo: Logo5, link: "/Pg" },
+    { name: "PAGARIYA HOMES", logo: Logo6, link: "/Pg" },
+    { name: "PAGARIYA METALS", logo: Logo7, link: "/Pg" },
+    {
+      name: "PAGARIYA LAKE GARDEN",
+      logo: Logo8,
+      link: "/Pg",
+    },
+    { name: "PAGARIYA LAWNS", logo: Logo9, link: "/Pg" },
+    { name: "PAGARIYA FARMS", logo: Logo10, link: "/Pg" },
+    {
+      name: "PAGARIYA EQUIPMENT SOLUTIONS",
+      logo: Logo11,
+      link: "/Pg",
+    },
+    {
+      name: "PAGARIYA EQUIPMENT SOLUTIONS",
+      logo: Logo12,
+      link: "/Pg",
+    },
+    { name: "PAGARIYA CRUSHERS", logo: Logo13, link: "/Pg" },
+    {
+      name: "PAGARIYA TEXTILE PARK",
+      logo: Logo14,
+      link: "/Pg",
+    },
+    {
+      name: "PAGARMAL FOUNDATION",
+      logo: Logo15,
+      link: "/Pg",
+    },
+    { name: "DARAS", logo: Logo16, link: "/Pg" },
+    { name: "VIDARBHA", logo: Logo17, link: "/Pg" },
+    { name: "URJA TECH", logo: Logo18, link: "/Pg" },
+    { name: "URJA INFRASTONE", logo: Logo19, link: "/Pg" },
+    {
+      name: "URJA INFRASTRUCTURES",
+      logo: Logo20,
+      link: "/Pg",
+    },
+    { name: "PAGARIYA STONES", logo: Logo21, link: "/Pg" },
+    { name: "PAGARIYA CERAMIC", logo: Logo22, link: "/Pg" },
+    { name: "GREEN", logo: Logo23, link: "/Pg" },
   ];
 
   const stats = [
@@ -79,7 +106,7 @@ export default function StatsAndBrands() {
 
   return (
     <Box sx={{ width: "100%", marginBottom: 12 }}>
-      {/* Stats Section */}
+      {/* Stats */}
       <Box
         sx={{
           display: "flex",
@@ -110,7 +137,6 @@ export default function StatsAndBrands() {
               transition: "all 0.3s ease",
               "&:hover": {
                 boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)",
-                // transform: "translateY(-4px) scale(1.02)",
               },
             }}
           >
@@ -145,11 +171,7 @@ export default function StatsAndBrands() {
             </Typography>
             <Typography
               variant="body1"
-              sx={{
-                color: "#777",
-                mt: 0.5,
-                fontSize: "0.95rem",
-              }}
+              sx={{ color: "#777", mt: 0.5, fontSize: "0.95rem" }}
             >
               {stat.text}
             </Typography>
@@ -157,8 +179,7 @@ export default function StatsAndBrands() {
         ))}
       </Box>
 
-      {/* Brands Grid */}
-
+      {/* Brands */}
       <Box
         sx={{
           display: "flex",
@@ -171,53 +192,60 @@ export default function StatsAndBrands() {
           width: "100vw",
         }}
       >
-        {brands.map((brand, index) => (
-          <MotionBox
-            key={index}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0, ease: "easeOut" }}
-            viewport={{ once: true }}
-            sx={{
-              bgcolor: "white",
-              borderRadius: 2,
-              border: "1px solid #e0e0e0",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-              p: 1.5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: {
-                xs: "calc(50% - 8px)",
-                sm: "calc(25% - 12px)",
-                md: "calc(16.666% - 12px)",
-                lg: "calc(12.5% - 12px)",
-              },
-              height: 65,
-              cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
-              "&:hover": {
-                boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
-                transform: "translateY(-4px) scale(1.02)",
+        {brands.map((brand, index) => {
+          if (!brand.link) return null;
 
-                borderColor: "#E66234",
-              },
-            }}
-          >
-            <Box
-              component="img"
-              src={brand.logo.src}
-              alt={brand.name}
-              sx={{
-                maxWidth: "65%",
-                maxHeight: "100%",
-                objectFit: "contain",
-                transition: "transform 0.3s ease",
-              }}
-            />
-          </MotionBox>
-        ))}
+          return (
+            <Link
+              key={index}
+              href={brand.link}
+              style={{ display: "contents" }}
+              prefetch
+            >
+              <MotionBox
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                viewport={{ once: true }}
+                sx={{
+                  bgcolor: "white",
+                  borderRadius: 2,
+                  border: "1px solid #e0e0e0",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+                  p: 2.5,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: {
+                    xs: "calc(50% - 8px)",
+                    sm: "calc(25% - 12px)",
+                    md: "calc(16.666% - 12px)",
+                    lg: "calc(12.5% - 12px)",
+                  },
+                  height: 110,
+                  cursor: "pointer",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+                    transform: "translateY(-4px) scale(1.02)",
+                    borderColor: "#E66234",
+                  },
+                }}
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  style={{
+                    maxWidth: "90%",
+                    maxHeight: "90%",
+                    objectFit: "contain",
+                  }}
+                />
+              </MotionBox>
+            </Link>
+          );
+        })}
       </Box>
     </Box>
   );
