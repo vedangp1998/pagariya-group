@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
+  const [showButtons] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -84,65 +85,69 @@ const Hero = () => {
             </Typography>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ willChange: "transform, opacity" }}
-          >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 4 }}>
-              <Button
-                sx={{
-                  // background: "linear-gradient(90deg, #ed6936, #ffb347)",
-                  backgroundColor: "#ed6936",
-                  color: "white",
-                  width: "160px",
-                  height: "45px",
-                  textTransform: "none",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  borderRadius: "4px",
-                  boxShadow: "0 2px 10px rgba(237,105,54,0.4)",
-                  transition: "all 0.3s",
-                  "&:hover": {
-                    boxShadow: "0 6px 30px rgba(237,105,54,0.6)",
-                    transform: "translateY(-2px)",
-                  },
-                }}
+          {showButtons && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              style={{ willChange: "transform, opacity" }}
+            >
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: 2, mt: 4 }}
               >
-                Get Started
-              </Button>
-
-              <motion.div
-                onClick={handleOpen}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  color: "white",
-                  cursor: "pointer",
-                  willChange: "transform",
-                }}
-              >
-                <motion.div
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [1, 0.9, 1],
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1.6,
-                    ease: "easeInOut",
+                <Button
+                  sx={{
+                    // background: "linear-gradient(90deg, #ed6936, #ffb347)",
+                    backgroundColor: "#ed6936",
+                    color: "white",
+                    width: "160px",
+                    height: "45px",
+                    textTransform: "none",
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    borderRadius: "4px",
+                    boxShadow: "0 2px 10px rgba(237,105,54,0.4)",
+                    transition: "all 0.3s",
+                    "&:hover": {
+                      boxShadow: "0 6px 30px rgba(237,105,54,0.6)",
+                      transform: "translateY(-2px)",
+                    },
                   }}
                 >
-                  <CirclePlay size={34} color="#ed6936" strokeWidth={1.5} />
+                  Get Started
+                </Button>
+
+                <motion.div
+                  onClick={handleOpen}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    color: "white",
+                    cursor: "pointer",
+                    willChange: "transform",
+                  }}
+                >
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [1, 0.9, 1],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.6,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <CirclePlay size={34} color="#ed6936" strokeWidth={1.5} />
+                  </motion.div>
+                  <span style={{ fontSize: "16px" }}>Watch Video</span>
                 </motion.div>
-                <span style={{ fontSize: "16px" }}>Watch Video</span>
-              </motion.div>
-            </Box>
-          </motion.div>
+              </Box>
+            </motion.div>
+          )}
         </Box>
       </Box>
 
