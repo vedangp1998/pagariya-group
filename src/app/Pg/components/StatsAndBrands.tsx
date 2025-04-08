@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -51,6 +53,38 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
+const StatCounter = ({ number }: { number: number }) => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+  const count = useMotionValue(0);
+  const [displayedValue, setDisplayedValue] = useState(0);
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(count, number, {
+        duration: 1,
+        ease: "easeOut",
+        onUpdate: (latest) => setDisplayedValue(Math.round(latest)),
+      });
+      return () => controls.stop();
+    }
+  }, [inView, number, count]);
+
+  return (
+    <Typography
+      ref={ref}
+      variant="h3"
+      sx={{
+        fontSize: { xs: "2rem", md: "2.5rem" },
+        fontWeight: 500,
+        color: "#555",
+        mt: 3,
+      }}
+    >
+      {displayedValue}
+    </Typography>
+  );
+};
+
 export default function StatsAndBrands() {
   const brands = [
     { name: "UTEX", logo: Logo1, link: "/Pg/utex" },
@@ -81,17 +115,17 @@ export default function StatsAndBrands() {
 
   const stats = [
     {
-      number: "70",
+      number: 70,
       text: "Years of Industry Leadership",
       icon: <LightbulbOutlinedIcon sx={{ color: "#FF7F50" }} />,
     },
     {
-      number: "85",
+      number: 85,
       text: "Presence in Countries",
       icon: <PublicOutlinedIcon sx={{ color: "#FF7F50" }} />,
     },
     {
-      number: "34",
+      number: 34,
       text: "Acre Processing Facility",
       icon: <BusinessOutlinedIcon sx={{ color: "#FF7F50" }} />,
     },
@@ -151,17 +185,7 @@ export default function StatsAndBrands() {
             >
               {stat.icon}
             </Box>
-            <Typography
-              variant="h3"
-              sx={{
-                fontSize: { xs: "2rem", md: "2.5rem" },
-                fontWeight: 500,
-                color: "#555",
-                mt: 3,
-              }}
-            >
-              {stat.number}
-            </Typography>
+            <StatCounter number={stat.number} />
             <Typography
               variant="body1"
               sx={{ color: "#777", mt: 0.5, fontSize: "0.95rem" }}
