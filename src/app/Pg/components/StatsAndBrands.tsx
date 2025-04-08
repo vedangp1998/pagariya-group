@@ -35,52 +35,43 @@ import Logo23 from "../../assets/logos/logo23.png";
 
 const MotionBox = motion(Box);
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function StatsAndBrands() {
   const brands = [
-    { name: "UTZ", logo: Logo1, link: "/Pg/utex" },
+    { name: "UTEX", logo: Logo1, link: "/Pg/utex" },
     { name: "PAGARIYA EXPORTS", logo: Logo2, link: "/Pg/pagariya-exports" },
     { name: "PAGARIYA HOMES", logo: Logo3, link: "/Pg/pagariya-homes" },
     { name: "PAGARIYA REALTORS", logo: Logo4, link: "/Pg/pagariya-realtors" },
     { name: "PAGARIYA WOODWORKS", logo: Logo5, link: "/Pg" },
     { name: "PAGARIYA HOMES", logo: Logo6, link: "/Pg" },
     { name: "PAGARIYA METALS", logo: Logo7, link: "/Pg" },
-    {
-      name: "PAGARIYA LAKE GARDEN",
-      logo: Logo8,
-      link: "/Pg",
-    },
+    { name: "PAGARIYA LAKE GARDEN", logo: Logo8, link: "/Pg" },
     { name: "PAGARIYA LAWNS", logo: Logo9, link: "/Pg" },
     { name: "PAGARIYA FARMS", logo: Logo10, link: "/Pg" },
-    {
-      name: "PAGARIYA EQUIPMENT SOLUTIONS",
-      logo: Logo11,
-      link: "/Pg",
-    },
-    {
-      name: "PAGARIYA EQUIPMENT SOLUTIONS",
-      logo: Logo12,
-      link: "/Pg",
-    },
+    { name: "PAGARIYA EQUIPMENT SOLUTIONS", logo: Logo11, link: "/Pg" },
+    { name: "PAGARIYA EQUIPMENT SOLUTIONS", logo: Logo12, link: "/Pg" },
     { name: "PAGARIYA CRUSHERS", logo: Logo13, link: "/Pg" },
-    {
-      name: "PAGARIYA TEXTILE PARK",
-      logo: Logo14,
-      link: "/Pg",
-    },
-    {
-      name: "PAGARMAL FOUNDATION",
-      logo: Logo15,
-      link: "/Pg",
-    },
+    { name: "PAGARIYA TEXTILE PARK", logo: Logo14, link: "/Pg" },
+    { name: "PAGARMAL FOUNDATION", logo: Logo15, link: "/Pg" },
     { name: "DARAS", logo: Logo16, link: "/Pg" },
     { name: "VIDARBHA", logo: Logo17, link: "/Pg" },
     { name: "URJA TECH", logo: Logo18, link: "/Pg" },
     { name: "URJA INFRASTONE", logo: Logo19, link: "/Pg" },
-    {
-      name: "URJA INFRASTRUCTURES",
-      logo: Logo20,
-      link: "/Pg",
-    },
+    { name: "URJA INFRASTRUCTURES", logo: Logo20, link: "/Pg" },
     { name: "PAGARIYA STONES", logo: Logo21, link: "/Pg" },
     { name: "PAGARIYA CERAMIC", logo: Logo22, link: "/Pg" },
     { name: "GREEN", logo: Logo23, link: "/Pg" },
@@ -180,7 +171,11 @@ export default function StatsAndBrands() {
       </Box>
 
       {/* Brands */}
-      <Box
+      <MotionBox
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
         sx={{
           display: "flex",
           flexWrap: "wrap",
@@ -203,11 +198,9 @@ export default function StatsAndBrands() {
               prefetch
             >
               <MotionBox
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                variants={itemVariants}
                 whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 sx={{
                   bgcolor: "white",
                   borderRadius: 2,
@@ -246,7 +239,7 @@ export default function StatsAndBrands() {
             </Link>
           );
         })}
-      </Box>
+      </MotionBox>
     </Box>
   );
 }
