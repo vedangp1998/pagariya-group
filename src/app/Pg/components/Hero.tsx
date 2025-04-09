@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Box, Button, Typography, Modal, IconButton } from "@mui/material";
-import HeroImage from "../../assets/img/hero-bg.jpg";
+import HeroImage from "../../assets/img/hero-bg2.jpg";
 import { CirclePlay, X } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -31,7 +31,7 @@ const Hero = () => {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2))",
+              "linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7))",
             zIndex: 1,
           }}
         />

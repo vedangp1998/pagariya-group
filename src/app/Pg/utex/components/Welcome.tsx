@@ -3,7 +3,7 @@ import { Box, Typography, Container } from "@mui/material";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import ImageUtex from "../../../assets/details/detail1.jpg";
+import ImageUtex from "../../../assets/details/detail5.jpg";
 
 const Details = [
   {
