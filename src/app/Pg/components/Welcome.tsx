@@ -89,11 +89,15 @@ const Welcome = () => {
               color: "#444",
             }}
           >
-            Rooted in the heart of Central India, Pagariya Group embarked on its
-            remarkable journey in 1950 with a singular vision—to build a legacy
-            of excellence. Today, we stand tall as Central India’s leading and
-            most dynamic business conglomerate, driven by innovation, growth,
-            and a deep commitment to community progress.
+            &quot;Lead by three brothers, Ujwal, Ulhas and Umesh, the Pagariya
+            group was founded by Mr. Parasmalji Pagariya in 1978. Starting with
+            textile trading in Jalgaon, Maharashtra, the group has now
+            diversified itself into many verticals whilst moving its base to
+            Nagpur. Some of the verticals in the group that have built a strong
+            presence are the Processing and trading of food rains, Engineering
+            construction &amp; contracts, Commercial real estate development,
+            Construction materials and manufacturing facilities for safety gear
+            and machine tools.&quot;
           </Typography>
         </motion.div>
       </Box>

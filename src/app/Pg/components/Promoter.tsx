@@ -82,7 +82,7 @@ const Promoter = () => {
                 fontSize: { xs: "26px", md: "34px" },
               }}
             >
-              PROMOTER
+              PROMOTERS
             </Typography>
             <Typography
               variant="subtitle1"

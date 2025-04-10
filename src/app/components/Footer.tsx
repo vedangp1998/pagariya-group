@@ -11,10 +11,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import InstagramIcon from "@mui/icons-material/Instagram";
+// import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -83,7 +83,9 @@ const Footer = () => {
             <Typography variant="body2" paragraph>
               <strong>Email:</strong> exports@pagariyaexports.in
             </Typography>
-            <Box mt={2}>
+
+            {/* Social Media Links  */}
+            {/* <Box mt={2}>
               {[TwitterIcon, FacebookIcon, InstagramIcon, LinkedInIcon].map(
                 (Icon, index) => (
                   <IconButton
@@ -102,7 +104,7 @@ const Footer = () => {
                   </IconButton>
                 )
               )}
-            </Box>
+            </Box> */}
           </Box>
 
           {/* Useful Links */}
