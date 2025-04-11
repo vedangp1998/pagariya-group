@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import Welcome from "./components/Welcome";
-import Contact from "../../components/Contact";
+import Contact from "../components/Contact";
 
 const AboutUs = () => {
   return (

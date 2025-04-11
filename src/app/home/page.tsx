@@ -6,7 +6,7 @@ import Infrastructure from "./components/Infrastructure";
 import Promoter from "./components/Promoter";
 import StatsAndBrands from "./components/StatsAndBrands";
 
-const PagariyaGroupPage = () => {
+const Home = () => {
   return (
     <>
       <section id="home">
@@ -34,4 +34,4 @@ const PagariyaGroupPage = () => {
   );
 };
 
-export default PagariyaGroupPage;
+export default Home;

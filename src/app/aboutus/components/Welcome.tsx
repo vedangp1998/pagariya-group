@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
-import Image1 from "../../../assets/img/team/Shri-Ujjwal.png";
-import Image2 from "../../../assets/img/team/Shri-Ulhas.png";
-import Image3 from "../../../assets/img/team/Umesh-ji.jpg";
+import Image1 from "../../assets/img/team/Shri-Ujjwal.png";
+import Image2 from "../../assets/img/team/Shri-Ulhas.png";
+import Image3 from "../../assets/img/team/Umesh-ji.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },

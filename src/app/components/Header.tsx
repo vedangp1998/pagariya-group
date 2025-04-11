@@ -21,13 +21,15 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const pathSegment = pathname.split("/")[1];
-  const companyKey =
-    pathSegment === ""
-      ? "default"
-      : pathSegment === "pagariya-exports"
-      ? "exports"
-      : pathSegment;
+  const segments = pathname.split("/").filter(Boolean);
+  let companyKey = "default";
+
+  if (segments.length === 1 && segments[0] === "home") {
+    companyKey = "home";
+  } else if (segments.length >= 2 && segments[0] === "home") {
+    companyKey = segments[1]; // eg: /home/utex → 'utex'
+  }
+
   const currentLinks = NavLinks[companyKey] || NavLinks["default"];
 
   return (

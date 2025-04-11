@@ -1,9 +1,9 @@
-import PagariyaGroupPage from "./Pg/page";
+import HomePage from "@/app/home/page";
 
 const Home = () => {
   return (
     <>
-      <PagariyaGroupPage />
+      <HomePage />
     </>
   );
 };
