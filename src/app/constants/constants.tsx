@@ -1,13 +1,13 @@
 export const NavLinks = {
   default: [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Infrastructure", href: "#infrastructure" },
     { label: "Team", href: "#team" },
     { label: "Contact", href: "#contact" },
   ],
   home: [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Infrastructure", href: "#infrastructure" },
     { label: "Team", href: "#team" },
