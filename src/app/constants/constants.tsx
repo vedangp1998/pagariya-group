@@ -14,27 +14,27 @@ export const NavLinks = {
     { label: "Contact", href: "#contact" },
   ],
   utex: [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
   "pagariya-homes": [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
   "pagariya-exports": [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
   "pagariya-realtors": [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
   swaaditi: [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],

@@ -90,7 +90,12 @@ const Header = () => {
                 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <a href={link.href} style={{ textDecoration: "none" }}>
+                {/* <a href={link.href} style={{ textDecoration: "none" }}> */}
+                <Link
+                  href={link.href}
+                  passHref
+                  style={{ textDecoration: "none" }}
+                >
                   <ListItemText
                     primary={link.label}
                     sx={{
@@ -105,7 +110,8 @@ const Header = () => {
                       },
                     }}
                   />
-                </a>
+                </Link>
+                {/* </a> */}
               </motion.div>
             ))}
           </Box>
